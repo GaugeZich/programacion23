@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { TarjetasInicio } from 'src/app/models/modelos';
+import { Boca } from 'src/app/models/boca';
 
 @Component({
   selector: 'app-inicio',
@@ -8,16 +9,34 @@ import { TarjetasInicio } from 'src/app/models/modelos';
 })
 export class InicioComponent {
   //Propiedad publica (Tipo array)
-  public info: TarjetasInicio[];
-
+  
+  public jugador: Boca[];
   //Inicializa la propiedad info
   constructor(){
-    this.info = [
+    this.jugador = [
       {
-        titulo:"Tarjeta 1",
-        descripcion:"Jugador lateral o extremo de boca, viene de las inferiores y la esta rompiendo en la primera del futbol argentino",
-        imagen:"https://fotos.perfil.com/2023/05/19/trim/720/410/barco-1571619.jpg",
-        alt:"Valentin \"Colo\" Barco"
+        id: "1",
+        nombre: "Medina",
+        equipo_anterior: "Inferiores",
+        dorsal: "36",
+        imagen: "https://www.lanacion.com.ar/resizer/K_esfrtbQ8Oedjfw235bc_YQZy4=/420x280/smart/filters:format(webp):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/lanacionar/CUYNQ53VNVCHLMV4PIRZLSE7EE.JPG",
+        alt: "Cristian Medina"
+      },
+      {
+        id: "2",
+        nombre: "Merentiel",
+        equipo_anterior: "Palmeiras",
+        dorsal: "16",
+        imagen: "https://pbs.twimg.com/media/Fp3FRBkWIAA_Lx7.jpg",
+        alt: "Miguel Merentiel"
+      },
+      {
+        id: "3",
+        nombre: "Barco",
+        equipo_anterior: "Inferiores",
+        dorsal: "19",
+        imagen: "https://tntsports.com.ar/__export/1691634929917/sites/tntsports/img/2023/08/09/boca_gol_colo_barco.jpg_2133781157.jpg",
+        alt: "Valentin \"Colo\" Barco"
       }
     ]
   }

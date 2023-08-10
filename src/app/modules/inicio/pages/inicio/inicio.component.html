@@ -1,20 +1,29 @@
-<div *ngFor="let i of info" class="div">
-    <mat-card class="example-card">
-        <mat-card-header>
-            <!-- Titulo -->
-          <mat-card-title>{{i.titulo}}</mat-card-title>
-        </mat-card-header>
-        <!-- Imagen -->
-        <img mat-card-image src="{{i.imagen}}" alt="{{i.alt}}" width="25%" height="25%">
-        <!-- Descripcion -->
-        <mat-card-content>
-          <p>
-            {{i.descripcion}}
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
-        </mat-card-actions>
-    </mat-card>    
+<div class="container">
+  <div class="row">
+    <h1>Inicio</h1>
+    <div class="col">
+      <div *ngFor="let j of jugador" class="contenido">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <!-- Titulo -->
+              <mat-card-title>{{j.nombre}}</mat-card-title>
+            </mat-card-header>
+            <!-- Imagen -->
+            <img mat-card-image src="{{j.imagen}}" alt="{{j.alt}}" width="100%">
+            <!-- Descripcion -->
+            <mat-card-content>
+              <p>
+                Dorsal: {{j.dorsal}}
+                <br>
+                Equipo anterior: {{j.equipo_anterior}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button>LIKE</button>
+              <button mat-button>SHARE</button>
+            </mat-card-actions>
+        </mat-card>    
+    </div>
+    </div>
+  </div>
 </div>
