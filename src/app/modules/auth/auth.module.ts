@@ -11,6 +11,10 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
+
+// Servicios
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -23,13 +27,18 @@ import {MatButtonModule} from '@angular/material/button';
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule
   ],
   exports: [
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule
+  ],
+  providers: [
+    //Proveedor -> servicio
+    AuthService
   ]
 })
 export class AuthModule { }
