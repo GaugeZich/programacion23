@@ -1,5 +1,5 @@
 export interface Usuario {
-    uid: string;    // Id para FireBase
+    uid: string | any;    // Id para FireBase
     nombre: string;
     contrasena: string;
 }
