@@ -21,8 +21,8 @@ export class RegisterComponent {
     // Importacion del modelo
     usuarios: Usuario = {
       uid: '',
-      nombre1: '',
       nombre: '',
+      email: '',
       rol: '',
       contrasena: '',
     }
@@ -36,7 +36,7 @@ export class RegisterComponent {
     // async: Una funcion asincronica se utiliza para tomar datos de internet
     async registrarse(){
       const credenciales={
-        nombre: this.usuarios.nombre,
+        nombre: this.usuarios.email,
         contrasena: this.usuarios.contrasena
       }
       const res = await this.servicioAuth.registrar(credenciales.nombre,credenciales.contrasena)
