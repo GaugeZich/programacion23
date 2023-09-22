@@ -3,26 +3,28 @@
       <mat-icon>home</mat-icon>
     </button>
     <span>My App</span>
-    <span class="example-spacer"></span>
 
     <!-- Enrutamos las páginas -->
     <button mat-button routerLink="/inicio">Inicio</button>
     <button mat-button routerLink="/nosotros">Nosotros</button>
-    <button mat-button routerLink="/productos">Productos</button>
+    <!-- Menu desplegable para productos -->
+    <button mat-button [matMenuTriggerFor]="menu">Productos</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/productos">Productos</button>
+      <button mat-menu-item routerLink="/camisetas">Camisetas</button>
+      <button mat-menu-item routerLink="/botines">Botines</button>
+      <button mat-menu-item routerLink="/pantalones">Pantalones</button>
+    </mat-menu>
+    
     <button mat-button routerLink="/admin">Admin</button>
+    
+    <span class="example-spacer"></span>
 
-    <!-- Registro -->
-    <button mat-icon-button routerLink="/register">
-      <mat-icon>person_add</mat-icon>
-    </button>
-
-    <!-- Log in -->
-    <button mat-icon-button routerLink="/login">
-      <mat-icon>person</mat-icon>
-    </button>
-
-    <!--  -->
-    <button mat-icon-button routerLink="/">
-      <mat-icon>person_off</mat-icon>
-    </button>
+    <!-- Menu despegable para usuarios (registro y login) -->
+    <!-- Va a contener los formularios de acceso -->
+    <button mat-button [matMenuTriggerFor]="user"><mat-icon>person</mat-icon></button>
+    <mat-menu #user="matMenu">
+      <button mat-menu-item routerLink="/login">Iniciar Sesión <mat-icon>person</mat-icon></button>
+      <button mat-menu-item routerLink="/register">Registrarse <mat-icon>person_add</mat-icon></button>
+    </mat-menu>
   </mat-toolbar>
