@@ -7,14 +7,36 @@ import { map } from 'rxjs/operators'
   providedIn: 'root'
 })
 export class CrudService {
-  private productoCollection: AngularFirestoreCollection<Producto>
+  private productosCollection: AngularFirestoreCollection<Producto>
   
   constructor(private database: AngularFirestore) {
-    this.productoCollection = database.collection('productos')
+    this.productosCollection = database.collection('productos')
   }
 
   // CRUD -> Productos
   crearProductos(producto: Producto){
-    
+    return new Promise(async(resolve,reject) =>{
+      try{
+        // Creamos constante que guarde un nuevo ID
+        const idProducto = this.database.createId();
+
+        // Se lo asignamos al atributo ID de la interfaz producto
+        producto.idProducto = idProducto;
+
+        const resultado = await this.productosCollection.doc(idProducto).set(producto)
+
+        resolve(resultado);
+      }catch (error){
+        reject(error);
+      }
+    })
+  }
+  obtenerProducto(){
+    // snapshotChanges -> Toma captura del estado de los datos
+    // pipe -> funciona como tuberia, retorna el nuevo arreglo
+    // map -> "mapea" o recorre esa nueva información
+    // a -> resguarda la nueva información y la envia
+    return this.productosCollection.snapshotChanges().
+    pipe(map(Action => Action.map(a => a.payload.doc.data())))
   }
 }
