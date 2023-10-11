@@ -11,7 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class TableComponent {
   coleccionProductos: Producto[] = []; // Creamos coleccion basada en interfaz Producto
 
-  productosSeleccionado!: Producto; // ! -> Recibir valores vacíos
+  productoSeleccionado!: Producto; // ! -> Recibir valores vacíos
 
   modalVisibleProducto: boolean = false;
 
@@ -55,6 +55,47 @@ export class TableComponent {
         alert("Hubo un error al cargar nuevo producto :( \n"+error)
       })
     }
+  }
+
+  // Editar producto -> Vincula al modal de editar
+  mostrarEditar(productoSeleccionado: Producto){
+    this.productoSeleccionado = productoSeleccionado;
+
+    /*
+    Retomamos y enviamos los valores de ese producto
+    seleccionado, el ID no se vuelve a enviar porque
+    no se modifica
+    */
+    this.producto.setValue({
+      nombre: productoSeleccionado.nombre,
+      imagen: productoSeleccionado.imagen,
+      alt: productoSeleccionado.alt,
+      descripcion: productoSeleccionado.descripcion,
+      precio: productoSeleccionado.precio,
+      categoria: productoSeleccionado.categoria
+    })
+  }
+  
+  // Vinvula a boton "guardar cambios"
+  editarProducto(){
+    let datos: Producto = {
+      idProducto: this.productoSeleccionado.idProducto,
+      // Signo de exclamación "!" -> Puede recibir valores vacíos al inicializar
+      nombre: this.producto.value.nombre!,
+      imagen: this.producto.value.imagen!,
+      alt: this.producto.value.alt!,
+      descripcion: this.producto.value.descripcion!,
+      precio: this.producto.value.precio!,
+      categoria: this.producto.value.categoria!
+    }
+
+  this.servicioCrud.modificarProducto(this.productoSeleccionado.idProducto, datos)
+  .then(producto => {
+    alert("El producto fue modificado con exito.");
+  })
+  .catch(error => {
+    alert("No se pudo modificar el producto \n"+error)
+  })
   }
 
 }
