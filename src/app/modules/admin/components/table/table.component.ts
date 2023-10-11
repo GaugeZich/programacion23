@@ -98,4 +98,20 @@ export class TableComponent {
   })
   }
 
+
+  // Eliminar producto
+  mostrarBorrar(productoSeleccionado: Producto){ // Boton para el modal
+    this.modalVisibleProducto = true;
+    this.productoSeleccionado = productoSeleccionado;
+  }
+
+  borrarProducto(){
+    this.servicioCrud.eliminarProducto(this.productoSeleccionado.idProducto)
+    .then(respuesta => {
+      alert("El producto ha sido elminado correctamente");
+    })
+    .catch(error => {
+      alert("No se ha podido eliminar el producto: \n"+error)
+    })
+  }
 }

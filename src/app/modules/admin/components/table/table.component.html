@@ -20,8 +20,12 @@
         <td>{{col.categoria}}</td>
         <!-- Acciones -->
         <td>
-            <button id="btn-acs" type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarProducto" (click)="mostrarEditar(col)"><mat-icon>edit</mat-icon></button>
-            <button id="btn-acs" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarProducto"><mat-icon>delete</mat-icon></button>
+          <!-- Boton de editar -->
+            <button id="btn-acs" type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#editarProducto" (click)="mostrarEditar(col)">
+              <mat-icon>edit</mat-icon></button>
+              <!-- Boton de borrar -->
+            <button id="btn-acs" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#eliminarProducto" (click)="mostrarBorrar(col)">
+              <mat-icon>delete</mat-icon></button>
         </td>
       </tr>
     </tbody>
@@ -133,6 +137,28 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal" (click)="editarProducto()">Guardar cambios</button>
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal para borrar -->
+<div class="modal fade" *ngIf="modalVisibleProducto" id="eliminarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Estás seguro de eliminar el producto?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Mostrar el producto que vamos a eliminar -->
+        Producto: {{productoSeleccionado.nombre}}
+        <img src="{{productoSeleccionado.imagen}}" alt="{{productoSeleccionado.alt}}" width="450" height="450">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" (click)="borrarProducto()">Eliminar</button>
       </div>
     </div>
   </div>
