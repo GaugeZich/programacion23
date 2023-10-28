@@ -48,7 +48,7 @@ export class TableComponent {
       };
       // Llamamos al servicioCrud, función crearProducto; seteamos nuevoProducto
       await this.servicioCrud.crearProductos(nuevoProducto)
-      .then(producto => {
+      .then(producto => { 
         alert("Ha agregado un nuevo producto con exito :)")
       })
       .catch(error => {
